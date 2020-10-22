@@ -16,3 +16,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.base-page {
+  padding: 4rem 0;
+}
