@@ -4,7 +4,7 @@ import Crousel from "../components/carousel";
 import MovieList from "../components/movieList";
 import { getMovies } from "../actions";
 
-const Home = ({ movies }) => {
+const Home = ({ movies, images }) => {
   // const [movies, setMovies] = useState([]);
   // const [errorMessage, setErrorMessage] = useState("");
   // useEffect(() => {
@@ -33,12 +33,12 @@ const Home = ({ movies }) => {
           <SideMenu />
         </div>
         <div className="col-lg-9">
-          <Crousel />
+          <Crousel images={images || []} />
           <div className="row">
             {/* {errorMessage && (
                   <div className="alert alert-danger">{errorMessage}</div>
                 )} */}
-            <MovieList movies={movies} />
+            <MovieList movies={movies || []} />
           </div>
         </div>
       </div>
@@ -48,7 +48,12 @@ const Home = ({ movies }) => {
 
 Home.getInitialProps = async () => {
   const movies = await getMovies();
-  return { movies };
+  const images = movies.map((movie) => ({
+    id: `image: ${movie.id}`,
+    url: movie.cover,
+    title: movie.name,
+  }));
+  return { movies, images };
 };
 
 export default Home;

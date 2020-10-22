@@ -17,6 +17,14 @@ a {
   box-sizing: border-box;
 }
 
+img {
+  width: 100%;
+}
+
 .base-page {
   padding: 4rem 0;
+}
+
+.carousel-item {
+  max-height: 400px;
 }
