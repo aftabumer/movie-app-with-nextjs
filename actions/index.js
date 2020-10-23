@@ -1,4 +1,4 @@
-const movieData = [
+const MOVIE_DATA = [
   {
     id: "1",
     name: "The Shawshank Redemption",
@@ -46,10 +46,42 @@ const movieData = [
   },
 ];
 
+const CATEGORY_DATA = [
+  {
+    id: "c-1",
+    name: "drama",
+  },
+  {
+    id: "c-2",
+    name: "action",
+  },
+  {
+    id: "c-3",
+    name: "adventure",
+  },
+  {
+    id: "c-4",
+    name: "historical",
+  },
+  {
+    id: "c-5",
+    name: "fantasy",
+  },
+];
+
+export const getCategories = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(CATEGORY_DATA);
+      //   reject("Canot fetch data");
+    }, 2000);
+  });
+};
+
 export const getMovies = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(movieData);
+      resolve(MOVIE_DATA);
       //   reject("Canot fetch data");
     }, 2000);
   });
@@ -57,8 +89,8 @@ export const getMovies = () => {
 
 export const getMovieById = (id) => {
   return new Promise((resolve, reject) => {
-    const movieIndex = movieData.findIndex((movie) => movie.id === id);
-    const movie = movieData[movieIndex];
+    const movieIndex = MOVIE_DATA.findIndex((movie) => movie.id === id);
+    const movie = MOVIE_DATA[movieIndex];
     setTimeout(() => resolve(movie), 50);
   });
 };

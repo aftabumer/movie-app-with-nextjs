@@ -11,6 +11,7 @@ const Crousel = ({ images }) => {
             data-target="#carouselExampleIndicators"
             data-slide-to={index}
             className={index === 0 ? "active" : ""}
+            key={index}
           ></li>
         ))}
       </ol>
