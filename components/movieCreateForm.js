@@ -7,7 +7,7 @@ const MovieCreateForm = ({ handleFormSubmit }) => {
     rating: "",
     image: "",
     cover: "",
-    longDescription: "",
+    longDesc: "",
   });
 
   const handleChange = (event) => {
@@ -111,13 +111,13 @@ const MovieCreateForm = ({ handleFormSubmit }) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="longDescription">Long Description</label>
+        <label htmlFor="longDesc">Long Description</label>
         <textarea
           className="form-control"
-          value={form.longDescription}
+          value={form.longDesc}
           onChange={handleChange}
-          id="longDescription"
-          name="longDescription"
+          id="longDesc"
+          name="longDesc"
           rows="3"
         ></textarea>
       </div>

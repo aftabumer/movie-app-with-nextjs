@@ -1,6 +1,7 @@
 const express = require("express");
 const next = require("next");
 const bodyParser = require("body-parser");
+const movieData = require("./data.json");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -13,7 +14,7 @@ app.prepare().then(() => {
   server.use(bodyParser.json());
 
   server.get("/api/v1/movies", (req, res) => {
-    return res.json({ message: "Helloo world" });
+    return res.json(movieData);
   });
   server.post("/api/v1/movies", (req, res) => {
     const movie = req.body;

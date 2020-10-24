@@ -15,7 +15,7 @@ const Movie = ({ movie }) => {
           Learn more
         </a>
       </div>
-      <p>{movie.longDescription}</p>
+      <p>{movie.longDesc}</p>
     </div>
   );
 };
