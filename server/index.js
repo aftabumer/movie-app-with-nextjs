@@ -1,7 +1,12 @@
 const express = require("express");
 const next = require("next");
 const bodyParser = require("body-parser");
-const movieData = require("./data.json");
+
+const filePath = "./data.json";
+const fs = require("fs");
+const path = require("path");
+const { json } = require("body-parser");
+const movieData = require(filePath);
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -20,15 +25,26 @@ app.prepare().then(() => {
   server.get("/api/v1/movies/:id", (req, res) => {
     const { id } = req.params;
     const movie = movieData.find((movie) => movie.id === id);
-    // const movie = movieData[movieIndex];
 
     return res.json(movie);
   });
 
   server.post("/api/v1/movies", (req, res) => {
     const movie = req.body;
-    console.log(JSON.stringify(movie));
-    return res.json({ ...movie, createdTime: "today", author: "Aftab" });
+    movieData.push(movie);
+
+    const pathToFile = path.join(__dirname, filePath);
+    const stringifiedData = JSON.stringify(movieData, null, 2);
+
+    fs.writeFile(pathToFile, stringifiedData, (err) => {
+      if (err) {
+        return res.status(422).send(err);
+      }
+      return res.json("Movie has successfully added");
+    });
+
+    // console.log(JSON.stringify(movie));
+    // return res.json({ ...movie, createdTime: "today", author: "Aftab" });
   });
 
   server.delete("/api/v1/movies/:id", (req, res) => {
@@ -40,16 +56,16 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.get("/faq", (req, res) => {
-    res.send(`
-      <html>
-            <head></head>
-            <body>
-                <h1>html dirext render on example page</h1>
-            </body>
-        </html>
-    `);
-  });
+  // server.get("/faq", (req, res) => {
+  //   res.send(`
+  //     <html>
+  //           <head></head>
+  //           <body>
+  //               <h1>html dirext render on example page</h1>
+  //           </body>
+  //       </html>
+  //   `);
+  // });
 
   server.listen(port, (err) => {
     if (err) throw err;
