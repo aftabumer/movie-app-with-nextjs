@@ -42,14 +42,23 @@ app.prepare().then(() => {
       }
       return res.json("Movie has successfully added");
     });
-
-    // console.log(JSON.stringify(movie));
-    // return res.json({ ...movie, createdTime: "today", author: "Aftab" });
   });
 
   server.delete("/api/v1/movies/:id", (req, res) => {
     const { id } = req.params;
-    return res.json({ message: `Delete post of id:  ${id}` });
+    const movieIndex = movieData.findIndex((movie) => movie.id === id);
+
+    movieData.splice(movieIndex, 1);
+
+    const pathToFile = path.join(__dirname, filePath);
+    const stringifiedData = JSON.stringify(movieData, null, 2);
+
+    fs.writeFile(pathToFile, stringifiedData, (err) => {
+      if (err) {
+        return res.status(422).send(err);
+      }
+      return res.json("Movie has successfully delete");
+    });
   });
 
   server.all("*", (req, res) => {
