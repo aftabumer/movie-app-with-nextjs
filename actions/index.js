@@ -36,14 +36,13 @@ export const getCategories = () => {
 };
 
 export const getMovies = () => {
+  return axios.get(`${BASE_URL}/api/v1/movies`).then((res) => res.data);
   // return new Promise((resolve, reject) => {
   //   setTimeout(() => {
   //     resolve(MOVIE_DATA);
   //     //   reject("Canot fetch data");
   //   }, 2000);
   // });
-
-  return axios.get(`${BASE_URL}/api/v1/movies`).then((res) => res.data);
 };
 
 export const createMovie = (movie) => {
@@ -58,9 +57,10 @@ export const createMovie = (movie) => {
 };
 
 export const getMovieById = (id) => {
-  return new Promise((resolve, reject) => {
-    const movieIndex = MOVIE_DATA.findIndex((movie) => movie.id === id);
-    const movie = MOVIE_DATA[movieIndex];
-    setTimeout(() => resolve(movie), 50);
-  });
+  return axios.get(`${BASE_URL}/api/v1/movies/${id}`).then((res) => res.data);
+  // return new Promise((resolve, reject) => {
+  //   const movieIndex = MOVIE_DATA.findIndex((movie) => movie.id === id);
+  //   const movie = MOVIE_DATA[movieIndex];
+  //   setTimeout(() => resolve(movie), 50);
+  // });
 };
