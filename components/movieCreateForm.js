@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const MovieCreateForm = ({ handleFormSubmit }) => {
-  const [form, setForm] = useState({
+const MovieCreateForm = ({ handleFormSubmit, initailData }) => {
+  const defaultData = {
     name: "",
     description: "",
     rating: "",
     image: "",
     cover: "",
     longDesc: "",
-  });
+  };
+  const fromData = initailData ? { ...initailData } : defaultData;
+  const [form, setForm] = useState(fromData);
 
   const handleChange = (event) => {
     const target = event.target;
@@ -44,6 +46,7 @@ const MovieCreateForm = ({ handleFormSubmit }) => {
 
   return (
     <form>
+      {/* {formDataLoader && <p>data is loading</p>} */}
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input
