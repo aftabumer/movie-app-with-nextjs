@@ -7,8 +7,7 @@ const EditMovie = ({ movie }) => {
   const router = useRouter();
   const handleUpdateMovie = (movie) => {
     updateMovie(movie).then((updatedMovie) => {
-      console.log(updatedMovie);
-      router.push(`/movies/${movie.id}`);
+      router.push("/movies/[id]", `/movies/${movie.id}`);
     });
   };
   return (
