@@ -1,12 +1,24 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { getMovieById } from "../../../actions";
+import { getMovieById, updateMovie } from "../../../actions";
 import MovieCreateForm from "../../../components/movieCreateForm";
 
 const EditMovie = ({ movie }) => {
+  const router = useRouter();
+  const handleUpdateMovie = (movie) => {
+    updateMovie(movie).then((updatedMovie) => {
+      console.log(updatedMovie);
+      router.push(`/movies/${movie.id}`);
+    });
+  };
   return (
     <div className="container">
       <h1>edit movie</h1>
-      <MovieCreateForm initailData={movie} />
+      <MovieCreateForm
+        initailData={movie}
+        submitBtnText="Update"
+        handleFormSubmit={handleUpdateMovie}
+      />
     </div>
   );
 };

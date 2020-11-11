@@ -33,13 +33,13 @@
     "image": "https://img.cinemablend.com/filter:scale/quill/0/f/5/2/a/6/0f52a6843a25c1a5c1f9a0c00548cad9e1d912e2.jpg?mw=600"
   },
   {
-    "name": "example movie",
+    "name": "example movie updated",
     "description": "short description",
-    "rating": "",
+    "rating": "0",
     "image": "https://images.unsplash.com/photo-1460881680858-30d872d5b530?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
     "cover": "https://images.unsplash.com/photo-1460881680858-30d872d5b530?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
     "longDesc": "long description",
-    "genre": "music,adventure,historical",
+    "genre": "music,adventure",
     "id": "en7qb"
   }
 ]
