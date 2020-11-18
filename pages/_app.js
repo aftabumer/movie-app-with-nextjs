@@ -1,4 +1,5 @@
-import "../styles/globals.css";
+import "../shared/scss/index.scss";
+
 import Head from "next/head";
 import App from "next/app";
 import Navbar from "../components/Navbar";
