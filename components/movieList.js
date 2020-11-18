@@ -26,6 +26,7 @@ const MovieList = ({ movies }) => {
                 </h4>
                 <h5>$24.99</h5>
                 <p className="card-text">{shorten(movie.description, 100)}</p>
+                <h5>{movie.genre}</h5>
               </div>
               <div className="card-footer">
                 <small className="text-muted">{movie.rating}</small>

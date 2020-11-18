@@ -3,7 +3,7 @@ import Modal from "./modal";
 import MovieCreateForm from "./movieCreateForm";
 import { useRouter } from "next/router";
 
-const SideMenu = ({ categories }) => {
+const SideMenu = ({ categories, changeCategory, activeCategory }) => {
   let modal = null;
   const router = useRouter();
 
@@ -21,7 +21,14 @@ const SideMenu = ({ categories }) => {
       <h1 className="my-4">Movie DB</h1>
       <div className="list-group">
         {categories.map((category, index) => (
-          <a href="#" className="list-group-item" key={index}>
+          <a
+            href="#"
+            className={`list-group-item ${
+              activeCategory === category.name ? "active" : ""
+            }`}
+            key={index}
+            onClick={() => changeCategory(category.name)}
+          >
             {category.name}
           </a>
         ))}
