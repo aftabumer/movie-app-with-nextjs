@@ -79,9 +79,9 @@ app.prepare().then(() => {
     });
   });
 
-  server.all("*", (req, res) => {
-    return handle(req, res);
-  });
+  // server.all("*", (req, res) => {
+  //   return handle(req, res);
+  // });
 
   // server.get("/faq", (req, res) => {
   //   res.send(`
@@ -94,7 +94,7 @@ app.prepare().then(() => {
   //   `);
   // });
 
-  server.listen(port, (err) => {
+  server.use(handle).listen(port, (err) => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });
